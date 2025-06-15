@@ -18,5 +18,3 @@ Matrix Position(double lon, double lat, double h) {
 
     return r;
 }
-
-

@@ -24,3 +24,4 @@ for (int i = N; i >= 2; i--) {
 	aux(3)=Cz(1);
 return f1*tau-f2+aux;
  }
+ 

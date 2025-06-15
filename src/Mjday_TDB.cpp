@@ -12,4 +12,3 @@ double Mjday_TDB(double Mjd_TT) {
                  + 0.000010 * sin(628.3076 * T_TT + 4.2490))/86400.0;
     return Mjd_TDB;
 }
-

@@ -24,5 +24,3 @@ Matrix G_AccelHarmonic(Matrix& r, Matrix& U, int n_max, int m_max) {
 	}
 	return G;
 }
-
-

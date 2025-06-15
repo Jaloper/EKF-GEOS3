@@ -74,4 +74,3 @@ Matrix Accel(double x, Matrix Y) {
         dY(i + 3, 1) = a(i, 1);
 	return dY;
 }
-

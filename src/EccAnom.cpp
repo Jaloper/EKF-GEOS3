@@ -31,4 +31,3 @@ while (fabs(f) > 100*eps){
 }
 return E;
  }
-
