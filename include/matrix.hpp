@@ -34,6 +34,8 @@ public:
 	Matrix& operator - (double d);
 	Matrix& operator * (double d);
 	Matrix& operator / (double d);
+	    ~Matrix();
+    Matrix(const Matrix& other);
 	
 	// Non-member operators
 	friend ostream& operator << (ostream &o, Matrix &m);
