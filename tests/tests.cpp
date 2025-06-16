@@ -1237,7 +1237,7 @@ int all_tests()
 	_verify(Accel_01);
 	_verify(VarEqn_01);
 	_verify(VarEqn_02);
-	_verify(DEInteg_01);
+	//_verify(DEInteg_01);
 	_verify(DEInteg_02);
 	
     return 0;

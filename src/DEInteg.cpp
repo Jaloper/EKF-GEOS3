@@ -4,13 +4,11 @@
 
 #define eps 2.22044604925031e-16
 
-Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double relerr,double abserr,int n_eqn,Matrix& y){;
+Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double relerr,double abserr,int n_eqn,Matrix& yParametro){;
 	// maxnum = 500;
-	cout<<"INICIO"<<endl;
-	cout<<"y"<<endl<<y<<endl;
 	double twou  = 2.0*eps;
 	double fouru = 4.0*eps;
-
+	Matrix y=yParametro;
 	enum class DE_STATE {
 		DE_INIT = 1,      // Restart integration
 		DE_DONE = 2,      // Successful step
@@ -87,8 +85,8 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 	double abseps = abserr/epsilon;
 	double h, x;
 	double delsgn;
-	bool OldPermit=true;
-	bool start=false;
+	bool OldPermit=false;
+	bool start;
 	if  ( (State_==DE_STATE::DE_INIT) || (!OldPermit) || (delsgn*del<=0.0) ){
 		// On start and restart also set the work variables x and yy(*),
 		// store the direction of integration and initialize the step size
@@ -118,12 +116,13 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 
 	  // If already past output point, interpolate solution and return
 	  if (fabs(x-t) >= absdel){
+		  yout  = zeros(n_eqn,1);
+		  ypout = zeros(n_eqn,1);
 		  g(2)= 1.0;
 		  rho(2)= 1.0;
 		  hi = tout - x;
 		  ki = kold + 1;
 		  // Initialize w[*] for computing g[*]
-		  Matrix w=zeros(1,ki+1);
 		  for(int i = 1; i <= ki; i++){
 			  temp1 = i;
 			  w(i+1) = 1.0/temp1;
@@ -143,8 +142,6 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 		  }
 		  // Interpolate for the solution yout and for
 		  // the derivative of the solution ypout 
-			yout=zeros(n_eqn,1);
-			ypout = zeros(n_eqn,1);
 		  for(int j = 1; j <= ki; j++){
 			  iAux = ki+1-j;
 			  yout  = yout  + extract_column(phi,iAux+1)*g(iAux+1);
@@ -163,8 +160,9 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 	  // extrapolate and return
 	  if ( !PermitTOUT && ( fabs(tout-x) < fouru*fabs(x) ) ){
 		  h = tout - x;
-		  cout<<"Llamada VarEqn1"<<endl;
+		  cout<<"11111111111111111111111111111111111111111111\n";  
 		  yp = func(x,yy);          // Compute derivative yp(x)
+		  cout<<"11111111111111111111111111111111111111111111\n";  
 		  y = yy + yp*h;                // Extrapolate vector from x to tout
 		  State_    = DE_STATE::DE_DONE; // Set return code
 		  t         = tout;             // Set independent variable
@@ -216,11 +214,10 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 	// acceptable value.                                  
 
 	round = 0.0;
-	y=transpose(y);
-	for (int l=1; l<=n_eqn;l++){
-		round = round + (y(l)*y(l))/(wt(l)*wt(l));
-	}
-	y=transpose(y);
+	Matrix y_temp = transpose(y);
+for (int l = 1; l <= n_eqn; l++) {
+    round = round + (y_temp(l) * y_temp(l)) / (wt(l) * wt(l));
+}
 	
 	round = twou*sqrt(round);
 	if (p5eps<round){
@@ -230,10 +227,11 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 	}
 	if (start){
 	  // Initialize. Compute appropriate step size for first step. 
-	  cout<<"2222222222222222222222222222222222222222"<<endl;
 	  //cout<<"x"<<endl<<x<<endl;			//BIEN
 	  //cout<<"y"<<endl<<y<<endl;			//BIEN
+	   cout<<"2222222222222222222222222222222222222222222222222\n";  
 	  yp = func(x,y);
+	  cout<<"2222222222222222222222222222222222222222222222222\n";  
 	  //cout<<"yp"<<endl<<yp<<endl;		//BIEN
 	  yp=transpose(yp);
 	  sum = 0.0;
@@ -261,7 +259,6 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 			  phi(l,16)=0.0;
 		 }
 	  }
-	  cout<<"-------------------------------------------"<<endl;
 	}
 	//                                                                   
 	// End block 0                                                       
@@ -270,9 +267,7 @@ Matrix DEInteg(Matrix func(double t, Matrix y), double t,double tout,double rele
 	//                                                                   
 	// Repeat blocks 1, 2 (and 3) until step is successful               
 	//        
-cout<<"1"<<endl;
 	while(true){
-		cout<<"2"<<endl;
 	  //                                                                 
 	  // Begin block 1                                                   
 	  //                                                                 
@@ -293,7 +288,7 @@ cout<<"1"<<endl;
 	  if (ns<=kold)
 		  ns=ns+1;
 	  nsp1 = ns+1;
-	  if (k>=ns){
+	  if (k>=ns){ 
 		  // Compute those components of alpha[*],beta[*],psi[*],sig[*] 
 		  // which are changed                                          
 		  beta(ns+1) = 1.0;
@@ -338,7 +333,7 @@ cout<<"1"<<endl;
 		  }
 		  else{
 			  for (int iq=1;iq<=k;iq++){
-				  temp3 = iq*(iq+1);
+				  temp3 = iq*(iq+1.0);
 				  v(iq+1) = 1.0/temp3;
 				  w(iq+1) = v(iq+1);
 			  }
@@ -357,7 +352,6 @@ cout<<"1"<<endl;
 		  }
 		  
 	  } // if K>=NS
-	  cout<<"3"<<endl;
 	  //
 	  // End block 1
 	  //
@@ -385,7 +379,6 @@ cout<<"1"<<endl;
 		  phi(l,kp1+1) = 0.0;
 		  p(l)       = 0.0;
 	   }
-	   
 	  for (int j=1;j<=k;j++){
 		  it     = kp1 - j;
 		  ip1   = it+1;
@@ -395,9 +388,12 @@ cout<<"1"<<endl;
 			  phi(l,it+1) = phi(l,it+1) + phi(l,ip1+1);
 		  }
 	  }
-	  if (nornd)
+	  if (nornd){
+		   cout<<"IFFF\n"; 
 		  p = transpose(y) + p*h;
-	  else{
+		  cout<<"FIIINN DEEEL IFFF\n"; 
+		  
+	  }else{
 		  for (int l=1;l<=n_eqn;l++){
 			  tau = h*p(l) - phi(l,16);
 			  p(l) = y(l) + tau;
@@ -407,8 +403,9 @@ cout<<"1"<<endl;
 	  xold = x;
 	  x = x + h;
 	  absh = fabs(h);
-	  cout<<"Llamada VarEqn 3"<<endl;
+	  cout<<"3333333333333333333333333333333333333333333333\n";  
 	  yp = func(x,transpose(p));
+	  cout<<"3333333333333333333333333333333333333333333333\n";  
 	  yp=transpose(yp);
 	  
 	  // Estimate errors at orders k, k-1, k-2 
@@ -418,9 +415,9 @@ cout<<"1"<<endl;
 	  
 	  for (int l=1;l<=n_eqn;l++){
 		  temp3 = 1.0/wt(l);
-		  cout<<"temp3"<<endl<<temp3<<endl;
+		  //cout<<"temp3"<<endl<<temp3<<endl;
 		  temp4 = yp(l) - phi(l,1+1);
-		  cout<<"temp4"<<endl<<temp4<<endl;
+		  //cout<<"temp4"<<endl<<temp4<<endl;
 		  if (km2> 0){
 			  erkm2 = erkm2 + ((phi(l,km1+1)+temp4)*temp3)
 							 *((phi(l,km1+1)+temp4)*temp3);
@@ -438,9 +435,9 @@ cout<<"1"<<endl;
 	  if (km2>=0)
 		  erkm1 = absh*sig(k+1)*gstr(km1+1)*sqrt(erkm1);
 	  //cout<<"absh"<<endl<<absh<<endl;		//BIEN
-	  cout<<"erk"<<endl<<erk<<endl;
+	  //cout<<"erk"<<endl<<erk<<endl;
 	  temp5 = absh*sqrt(erk);
-	  cout<<"temp5"<<endl<<temp5<<endl;
+	  //cout<<"temp5"<<endl<<temp5<<endl;
 	  //cout<<"g(k+1)"<<endl<<g(k+1)<<endl;		//BIEN
 	  //cout<<"-g(kp1+1)"<<endl<<-g(kp1+1)<<endl;		//BIEN
 	 err = temp5*(g(k+1)-g(kp1+1));
@@ -468,9 +465,9 @@ cout<<"1"<<endl;
 	  //
 	  
 	  success = (err<=epsilon);
-	   cout<<"SUUUCCESSS\n"; 
-	  cout<<"err"<<endl<<err<<endl;
-	  cout<<"epsilon"<<endl<<epsilon<<endl;
+	 //  cout<<"SUUUCCESSS\n"; 
+	 // cout<<"err"<<endl<<err<<endl;
+	 // cout<<"epsilon"<<endl<<epsilon<<endl;
 	  if (!success){	  
 		//
 		// Begin block 3
@@ -530,7 +527,7 @@ cout<<"1"<<endl;
 	  
 	  
 	}
-	
+	cout<<"Valor de y salida while"<<endl<<y<<endl;
 	//
 	// Begin block 4
 	//
@@ -541,27 +538,28 @@ cout<<"1"<<endl;
 
 	kold = k;
 	hold = h;
-	y=transpose(y);
 	// Correct and evaluate
 	
 	temp1 = h*g(kp1+1);
-	if (nornd){
-		for (int l=1;l<=n_eqn;l++){
-			y(l) = p(l) + temp1*(yp(l) - phi(l,2));
-		}
-	}
-	else{
-		for (int l=1;l<=n_eqn;l++){
-			rho_aux = temp1*(yp(l) - phi(l,2)) - phi(l,17);
-			y(l) =  rho_aux+ p(l);
-			phi(l,16) = (y(l) - p(l)) - rho_aux;
-		}
-	}
-	cout<<"Llamada VarEqn 4"<<endl;
-	yp = func(x,transpose(y));
+	cout<<"Operacion"<<endl;
+	Matrix auxy = transpose(y);	//LÍNEA CRÍTICA
+	cout<<"Traspuesta"<<endl;
+if (nornd) {
+    for (int l = 1; l <= n_eqn; l++) {
+        auxy(l) = p(l) + temp1 * (yp(l) - phi(l, 2));
+    }
+} else {
+    for (int l = 1; l <= n_eqn; l++) {
+        double rho_aux = temp1 * (yp(l) - phi(l, 2)) - phi(l, 17);
+        auxy(l) = rho_aux + p(l);
+        phi(l, 16) = (auxy(l) - p(l)) - rho_aux;
+    }
+}
+	cout<<"444444444444444444444444444444444444444444444444\n";  
+	yp = func(x,transpose(auxy));
+	 y=transpose(auxy);
+	cout<<"444444444444444444444444444444444444444444444444\n";  
 	yp=transpose(yp);
-	y=transpose(y);
-	
 	// Update differences for next step 
 	for (int l=1;l<=n_eqn;l++){
 		phi(l,kp1+1) = yp(l) - phi(l,2);
