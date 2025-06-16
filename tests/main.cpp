@@ -56,7 +56,7 @@ int main() {
 	double alt = 300.20;                // [m]
 
 	Matrix Rs = Position(lon, lat, alt);
-std::cout << std::fixed << std::setprecision(15) << obs(1,1) << std::endl;
+		Rs=transpose(Rs);
 	double Mjd1 = obs(1,1);
 	double Mjd2 = obs(9,1);
 	double Mjd3 = obs(18,1);
@@ -86,8 +86,7 @@ std::cout << std::fixed << std::setprecision(15) << obs(1,1) << std::endl;
     for (int i=4;i<=6;i++) P(i, i) = 1e3;
 
 	Matrix LT = LTC(lon,lat);
-
-	Matrix yPhi = zeros(42,1);
+	Matrix yPhi = zeros(1,42);
 	Matrix Phi  = zeros(6,6);
 	// Measurement loop
 	double t = 0.0;
@@ -105,7 +104,6 @@ std::cout << std::fixed << std::setprecision(15) << obs(1,1) << std::endl;
 		Mjd_UT1 = Mjd_TT + (UT1_UTC-TT_UTC)/86400.0;
 		AuxParam.Mjd_UTC = Mjd_UTC;
 		AuxParam.Mjd_TT = Mjd_TT;
-			yPhi=transpose(yPhi);
 		for (int ii=1;ii<=6;ii++){
 			yPhi(ii) = Y_old(ii);
 			for (int j=1;j<=6;j++){  
@@ -115,26 +113,11 @@ std::cout << std::fixed << std::setprecision(15) << obs(1,1) << std::endl;
 					yPhi(6*j+ii) = 0;
 				
 			}
-		}
-		cout<<"FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\n";    
+		}   
 		yPhi=transpose(yPhi);
-		// cout<<"t-t_old"<<endl<<t-t_old<<endl;	//BIEN
-		//  cout<<"yPhi"<<endl<<yPhi<<endl;			//BIEN
-					//Matrix yAux = DEInteg (VarEqn,0,t-t_old,1e-13,1e-6,42,yPhi);
-		Matrix yAux = zeros(42);
-	yAux(1) = 5738566.57839022;	yAux(2) = 3123975.34079016;	yAux(3) = 3727114.48185793;	yAux(4) = 5199.63333072018;
-	yAux(5) = -2474.43881538622; yAux(6) = -7195.16750655249; yAux(7) = 1.00041922218409; yAux(8) = 0.000599205935194404;
-	yAux(9) = 0.000737334362533021; yAux(10) = 2.34511597071509e-05; yAux(11) = 3.25240005373817e-05; yAux(12) = 3.97546995598408e-05; 
-	yAux(13) = 0.000599210756838493; yAux(14) = 0.999703770691831; yAux(15) = 0.000418687814292853; yAux(16) = 3.2524653813622e-05;
-	yAux(17) = -1.618549666143e-05; yAux(18) = 2.23405998999963e-05; yAux(19) = 0.000737344013617772; yAux(20) = 0.000418689927140238;
-	yAux(21) = 0.999877413280399; yAux(22) = 3.97560066296435e-05; yAux(23) = 2.23408858650554e-05; yAux(24) = -7.22167524870739e-06;
-	yAux(25) = 37.0053480735655; yAux(26) = 0.00742079763113316; yAux(27) = 0.00907126696571791; yAux(28) = 1.00044810751415;
-	yAux(29) = 0.000604061270927294; yAux(30) = 0.000733447714196462; yAux(31) = 0.00742082741989628; yAux(32) = 36.9963058593826;
-	yAux(33) = 0.00509711968519949; yAux(34) = 0.000604066117445701; yAux(35) = 0.999697158528896; yAux(36) = 0.000407829918752395;
-	yAux(37) = 0.00907132660207704; yAux(38) = 0.00509713273945149; yAux(39) = 36.9983505101626; yAux(40) = 0.000733457410964819; yAux(41) = 0.000407832040036561; yAux(42) = 0.999855141838546;
-
+					Matrix yAux = DEInteg (VarEqn,0,t-t_old,1e-13,1e-6,42,yPhi);
 		
-		yPhi=yAux;
+		yPhi=transpose(yAux);
 		// Extract state transition matrices
 		for (int j=1;j<=6;j++){  
 			for (int i=1;i<=6;i++){
@@ -149,7 +132,6 @@ std::cout << std::fixed << std::setprecision(15) << obs(1,1) << std::endl;
 		Matrix U = R_z(theta);
 		Matrix r = extract_vector(Y,1,3);
 			r=transpose(r);
-		Rs=transpose(Rs);
 		Matrix s = LT*(U*r-Rs);                          // Topocentric position [m]
 		// Time update
 		Matrix Px = TimeUpdate(P, Phi);
@@ -204,8 +186,6 @@ std::cout << std::fixed << std::setprecision(15) << obs(1,1) << std::endl;
 		auto [K3, Yaux3, Paux3] = MeasUpdate ( Y, obsAux, DistAux, sigma_rangeAux, dDdY, P, 6 );
 		Y=Yaux3;
 		P=Paux3;
-cout<<"HHHHH\n";
-return 0;
 	}	
 	auto [x_pole,y_pole,UT1_UTC,LOD,dpsi,deps,dx_pole,dy_pole,TAI_UTC] = IERS(obs(46,1),'l');
 	auto [UT1_TAI,UTC_GPS,UT1_GPS,TT_UTC,GPS_UTC] = timediff(UT1_UTC,TAI_UTC);
@@ -215,14 +195,14 @@ return 0;
 
 	Matrix Y0 = DEInteg (Accel,0,-(obs(46,1)-obs(1,1))*86400.0,1e-13,1e-6,6,Y);
 
-	Matrix Y_true(6,1);
-		Y_true(1, 1) = 5753.173e3; 
-		Y_true(2, 1) = 2673.361e3;
-		Y_true(3, 1) = 3440.304e3;
-		Y_true(4, 1) = 4.324207e3;
-		Y_true(5, 1) = -1.924299e3;
-		Y_true(6, 1) = -5.728216e3;
-
+	Matrix Y_true(6);
+		Y_true(1) = 5753.173e3; 
+		Y_true(2) = 2673.361e3;
+		Y_true(3) = 3440.304e3;
+		Y_true(4) = 4.324207e3;
+		Y_true(5) = -1.924299e3;
+		Y_true(6) = -5.728216e3;
+	Y0=transpose(Y0);
 	printf("\nError of Position Estimation\n");
 	printf("dX%10.1f [m]\n",Y0(1)-Y_true(1));
 	printf("dY%10.1f [m]\n",Y0(2)-Y_true(2));
