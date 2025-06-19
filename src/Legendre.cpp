@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// Legendre
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/29
+//
+/** @file Legendre.cpp
+ *  @brief Implements the computation of associated Legendre polynomials and their derivatives.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\Legendre.hpp"
 #include <tuple>
 

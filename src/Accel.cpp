@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// Accel
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/16
+//
+/** @file Accel.cpp
+ *  @brief Computes satellite acceleration due to Earth's gravity and third-body perturbations.
+ *
+ *	@author Jarein López Ruiz
+ *	@bug No knows bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\Accel.hpp"
 #include "..\include\SAT_Const.hpp"
 #include "..\include\global.hpp"

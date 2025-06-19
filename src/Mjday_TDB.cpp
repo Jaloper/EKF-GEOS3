@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// Mjday_TDB
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/18
+//
+/** @file Mjday_TDB.cpp
+ *  @brief Implements the conversion of Modified Julian Date from Terrestrial Time to Barycentric Dynamical Time.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\Mjday_TDB.hpp"
 
 double Mjday_TDB(double Mjd_TT) {

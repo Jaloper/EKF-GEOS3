@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// LTC
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/08
+//
+/** @file LTC.cpp
+ *  @brief Implements the computation of the Local Tangent Coordinate transformation matrix.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\LTC.hpp"
 #include "..\include\R_y.hpp"
 #include "..\include\R_z.hpp"

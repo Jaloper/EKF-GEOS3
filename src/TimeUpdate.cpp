@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// TimeUpdate
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/30
+//
+/** @file TimeUpdate.cpp
+ *  @brief Implements the time update step for a Kalman filter with and without process noise.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\TimeUpdate.hpp"
 
 

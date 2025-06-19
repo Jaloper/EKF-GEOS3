@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// PrecMatrix
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/07
+//
+/** @file PrecMatrix.cpp
+ *  @brief Implements the computation of the precession transformation matrix.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\PrecMatrix.hpp"
 #include "..\include\R_y.hpp"
 #include "..\include\R_z.hpp"

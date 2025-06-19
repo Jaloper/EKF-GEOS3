@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// IERS
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/25
+//
+/** @file IERS.cpp
+ *  @brief Implementation of Earth orientation parameter retrieval from IERS data.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\IERS.hpp"
 #include "..\include\SAT_Const.hpp"
 #include "..\include\global.hpp"

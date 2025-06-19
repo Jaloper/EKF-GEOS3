@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// NutAngles
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/29
+//
+/** @file NutAngles.cpp
+ *  @brief Implements the computation of nutation angles in longitude and obliquity.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\NutAngles.hpp"
 #include "..\include\SAT_Const.hpp"
 

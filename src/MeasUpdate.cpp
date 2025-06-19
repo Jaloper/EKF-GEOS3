@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// MeasUpdate
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/16
+//
+/** @file MeasUpdate.cpp
+ *  @brief Implements the measurement update step for a Kalman filter.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\MeasUpdate.hpp"
 
 std::tuple<Matrix&, Matrix&, Matrix&> MeasUpdate(Matrix x, Matrix z, Matrix g, Matrix s, Matrix G, Matrix P, int n){

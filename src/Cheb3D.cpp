@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// Cheb3D
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/11
+//
+/** @file Cheb3D.cpp
+ *  @brief Calculates the 3D Chebyshev interpolation based on the input coefficients.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\Cheb3D.hpp"
 
  Matrix Cheb3D(double t, int N, double Ta,double Tb, Matrix Cx, Matrix Cy, Matrix Cz){

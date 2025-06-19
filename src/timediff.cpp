@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// timediff
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/18
+//
+/** @file timediff.cpp
+ *  @brief Implements the computation of time differences between various time scales.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\timediff.hpp"
 
 

@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// EccAnom
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/17
+//
+/** @file EccAnom.cpp
+ *  @brief Calculates the eccentric anomaly from the mean anomaly and eccentricity using Newton's method.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\EccAnom.hpp"
 
 

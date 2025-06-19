@@ -1,3 +1,22 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// R_y
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/09
+//
+/** @file R_y.cpp
+ *  @brief Implements the computation of the rotation matrix around the y-axis.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
+
 #include "..\include\R_y.hpp"
 
 Matrix R_y(double angle){

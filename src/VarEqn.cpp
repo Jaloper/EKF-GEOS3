@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// VarEqn
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/06/19
+//
+/** @file VarEqn.cpp
+ *  @brief Implements the computation of variational equations for orbit propagation.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\VarEqn.hpp"
 #include "..\include\IERS.hpp"
 #include "..\include\timediff.hpp"

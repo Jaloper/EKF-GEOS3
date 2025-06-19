@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// Position
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/18
+//
+/** @file Position.cpp
+ *  @brief Implements the computation of the geocentric position vector from geodetic coordinates.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\Position.hpp"
 
 Matrix Position(double lon, double lat, double h) {

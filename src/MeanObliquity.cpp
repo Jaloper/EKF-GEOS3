@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// MeanObliquity
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/17
+//
+/** @file MeanObliquity.cpp
+ *  @brief Implements the computation of the mean obliquity of the ecliptic.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\MeanObliquity.hpp"
 
 

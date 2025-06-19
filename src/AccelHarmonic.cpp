@@ -1,3 +1,22 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// AccelHarmonic
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/07
+//
+/** @file AccelHarmonic.cpp
+ *  @brief Computes the satellite acceleration due to Earth's non-uniform gravity field,
+ *         using spherical harmonic expansion up to a specified degree and order.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\AccelPointMass.hpp"
 #include "..\include\SAT_Const.hpp"
 #include "..\include\Legendre.hpp"

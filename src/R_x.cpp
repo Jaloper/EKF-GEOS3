@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// R_x
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/09
+//
+/** @file R_x.cpp
+ *  @brief Implements the computation of the rotation matrix around the x-axis.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\R_x.hpp"
 
 Matrix R_x(double angle){

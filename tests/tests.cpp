@@ -324,7 +324,7 @@ int m_dot_01() {
 	
 	double result=65;
 	double R = dot(A,A);
-    _assert(m_equals(result, R, 1e-10));
+    ASSERT_CLOSE(result, R);
     
     return 0;
 }
@@ -411,7 +411,7 @@ int m_extract_col_01() {
 
 int m_assign_row_01() {
 	
-	Matrix A(2,3);
+	Matrix A=zeros(2,3);
 	A(1,1) = 1; A(1,2) = 2; A(1,3) = 3;
 	A(2,1) = 4; A(2,2) = 5;
 	
@@ -420,7 +420,7 @@ int m_assign_row_01() {
 	
 	Matrix C = assign_row(A,B,2);
 	
-	Matrix R(2,3);
+	Matrix R=zeros(2,3);
 	R(1,1) = 1; R(1,2) = 2; R(1,3) = 3;
 	R(2,1) = 2; R(2,2) = 5;
 
@@ -1135,7 +1135,6 @@ int DEInteg_01() {
     R(6, 1) = -7061.84554200295;
 	
 	_assert(m_equals(Y, R, 1e-8));
-	cout << "\n\n------------------------------ DEInteg_01\n\n";
 	return 0;
 }
 
@@ -1156,7 +1155,6 @@ int DEInteg_02() {
 	
     Matrix yPhip = DEInteg(VarEqn,0,37.0000004768372,1e-13,1e-6,42,yPhi);
 	
-	cout << yPhip;
 	
 	Matrix R(42,1);
 	R(1, 1)  =  5738566.57839022; R(2, 1)  =  3123975.34079016; R(3, 1)  =  3727114.48185792;
@@ -1175,7 +1173,6 @@ int DEInteg_02() {
     R(40, 1) =  0.00073345741122; R(41, 1) =  0.00040783204027; R(42, 1) =  0.99985514183868;
 	
 	_assert(m_equals(yPhip, R, 1e-8));
-	cout << "\n\n------------------------------ DEInteg_02\n\n";
 	return 0;
 }
 

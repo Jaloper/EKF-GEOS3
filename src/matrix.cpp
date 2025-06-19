@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// Matrix
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/02
+//
+/** @file matrix.cpp
+ *  @brief Implements the Matrix class for matrix operations.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\matrix.hpp"
 
 Matrix::Matrix(){
@@ -292,6 +310,47 @@ Matrix& Matrix::operator / (double d) {
 	
 	return *m_aux;
 }
+
+Matrix::~Matrix() {
+    if (data != nullptr) {
+        for (int i = 0; i < n_row; i++) {
+            if (data[i] != nullptr) {
+                free(data[i]);
+            }
+        }
+        free(data);
+        data = nullptr;
+    }
+    n_row = 0;
+    n_column = 0;
+}
+
+Matrix::Matrix(const Matrix& other) {
+    n_row = other.n_row;
+    n_column = other.n_column;
+    
+    if (n_row > 0 && n_column > 0) {
+        data = (double **)malloc(n_row * sizeof(double *));
+        if (data == nullptr) {
+            cout << "Matrix copy: memory of rows could not be assigned\n";
+            exit(EXIT_FAILURE);
+        }
+
+        for (int i = 0; i < n_row; i++) {
+            data[i] = (double *)malloc(n_column * sizeof(double));
+            if (data[i] == nullptr) {
+                cout << "Matrix copy: memory of columns could not be assigned\n";
+                exit(EXIT_FAILURE);
+            }
+            for (int j = 0; j < n_column; j++) {
+                data[i][j] = other.data[i][j];
+            }
+        }
+    } else {
+        data = nullptr;
+    }
+}
+
 
 ostream& operator << (ostream &o, Matrix &m) {
 	for (int i = 1; i <= m.n_row; i++) {

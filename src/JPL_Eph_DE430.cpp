@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// JPL_Eph_DE430
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/09
+//
+/** @file JPL_Eph_DE430.cpp
+ *  @brief Implements the computation of planetary positions using JPL DE430 ephemerides.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\JPL_Eph_DE430.hpp"
 #include "..\include\Cheb3D.hpp"
 #include "..\include\global.hpp"

@@ -1,3 +1,22 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// AzElPa
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/18
+//
+/** @file AzElPa.cpp
+ *  @brief Calculates azimuth, elevation, 
+ *         and their partial derivatives with respect to the position vector.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include <tuple>
 #include "..\include\AzElPa.hpp"
 

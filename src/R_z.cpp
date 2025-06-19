@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// R_z
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/09
+//
+/** @file R_z.cpp
+ *  @brief Implements the computation of the rotation matrix around the z-axis.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\R_z.hpp"
 
 Matrix R_z(double angle){

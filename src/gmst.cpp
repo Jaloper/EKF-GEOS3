@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// gmst
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/07
+//
+/** @file gmst.cpp
+ *  @brief Implementation of Greenwich Mean Sidereal Time computation.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\gmst.hpp"
 #include "..\include\Frac.hpp"
 

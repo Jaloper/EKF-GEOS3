@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// NutMatrix
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/08
+//
+/** @file NutMatrix.cpp
+ *  @brief Implements the computation of the nutation transformation matrix.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\NutMatrix.hpp"
 #include "..\include\MeanObliquity.hpp"
 #include "..\include\NutAngles.hpp"

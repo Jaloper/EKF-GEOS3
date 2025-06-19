@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// global
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/04/25
+//
+/** @file global.cpp
+ *  @brief Implements functions for loading Earth orientation parameters, gravity models, planetary ephemeris coefficients, and observation data.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\global.hpp"
 
 Param AuxParam;

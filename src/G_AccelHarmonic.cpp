@@ -1,3 +1,21 @@
+// $Source$
+//--------------------------------------------------------------------------------
+// G_AccelHarmonic
+//--------------------------------------------------------------------------------
+// Proyecto-TTI
+//
+// Copyright (c) 2020, Meysam Mahooti
+//
+// Created: 2025/05/16
+//
+/** @file G_AccelHarmonic.cpp
+ *  @brief Calculates the gradient of the harmonic acceleration field using finite differences.
+ *
+ *  @author Jarein López Ruiz
+ *  @bug No known bugs.
+ */
+//--------------------------------------------------------------------------------
+
 #include "..\include\G_AccelHarmonic.hpp"
 #include "..\include\AccelHarmonic.hpp"
 

@@ -33,7 +33,7 @@ type src\matrix.cpp^
  src\Accel.cpp^
  src\VarEqn.cpp^
  src\DEInteg.cpp^
- tests\main.cpp^
+ tests\EKF_GEOS3.cpp^
  > tests\result_main.cpp  2>nul
 
 g++ tests/result_main.cpp -lm -std=c++23 -o bin/main.exe
