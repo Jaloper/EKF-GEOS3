@@ -1,5 +1,10 @@
-# Proyecto TTI 
-## Instrucción de compilación aplicación principal:
+# EKF-GEOS3: C++ Extended Kalman Filter for GEOS-3 Orbit Determination
+
+## Build Instructions
+
+### Compile Main Application
+```bash
 g++ tests/EKF_GEOS3.cpp src/*cpp -lm -std=c++23 -o bin/main.exe
-## Instrucción de compilación de tests unitarios:
+
+Compile & Run Unit Tests
 g++ tests/tests.cpp src/*.cpp -lm -std=c++23 -o bin/tests.exe
